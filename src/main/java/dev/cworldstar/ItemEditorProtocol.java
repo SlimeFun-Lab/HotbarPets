@@ -3,13 +3,12 @@ package dev.cworldstar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiFunction;
-import java.util.logging.Level;
 import java.util.stream.Collectors;
 
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.ListenerPriority;
@@ -18,7 +17,7 @@ import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;
 import com.comphenix.protocol.reflect.StructureModifier;
 
-import dev.cworldstar.libs.cwlib.AbstractSFAddon;
+import io.github.thebusybiscuit.hotbarpets.HotbarPets;
 
 public class ItemEditorProtocol {
 	
@@ -68,7 +67,7 @@ public class ItemEditorProtocol {
 	public static void start() {
 		ProtocolLibrary.getProtocolManager().addPacketListener(
 			new PacketAdapter(PacketAdapter.params()
-				.plugin(AbstractSFAddon.get())
+				.plugin(HotbarPets.addon())
 				.listenerPriority(ListenerPriority.HIGH)
 				.types(PacketType.Play.Server.SET_SLOT, PacketType.Play.Server.WINDOW_ITEMS)) 
 			{
