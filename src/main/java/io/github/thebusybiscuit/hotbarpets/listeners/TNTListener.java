@@ -4,7 +4,6 @@ import java.util.Iterator;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
@@ -16,6 +15,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
+import dev.cworldstar.FormatUtils;
 import io.github.thebusybiscuit.hotbarpets.HotbarPets;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
@@ -41,7 +41,7 @@ public class TNTListener implements Listener {
                 e.setCancelled(true);
             } else if (!Slimefun.getProtectionManager().hasPermission(attacker, e.getEntity().getLocation(), Interaction.ATTACK_PLAYER)) {
                 e.setCancelled(true);
-                attacker.sendMessage(ChatColor.DARK_RED + "You cannot harm Players in here!");
+                attacker.sendMessage(FormatUtils.formatString("<red>You cannot harm players here!"));
             }
         }
     }
@@ -63,7 +63,6 @@ public class TNTListener implements Listener {
                 }
             }
 
-            // This is pretty much cancelled if all blocks were protected
             if (e.blockList().isEmpty()) {
                 e.setCancelled(true);
             }
